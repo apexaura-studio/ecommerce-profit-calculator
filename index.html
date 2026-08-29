@@ -1,213 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"><meta name="google-site-verification" content="LHTYo-8imAr00wkV25ZEfYspCvQrQdKGj3v-lKgJzKY" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Commerce Seller Profit & RTO Return Calculator | Meesho, Amazon, Flipkart</title>
-    <meta name="description" content="Free online e-commerce profit and RTO loss calculator for Meesho, Amazon, Flipkart, and Shopify sellers. Calculate net profit margin, shipping loss, and ROI instantly.">
-    <meta name="keywords" content="ecommerce profit calculator, meesho calculator, rto loss calculator, amazon seller margin, flipkart profit calculator">
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        brand: '#4f46e5',
-                        brandHover: '#4338ca'
-                    }
-                }
-            }
+  <meta charset="UTF-8">
+  <meta name="google-site-verification" content="LHTYo-8imAr00wkV25ZEfYspCvQrQdKGj3v-lKgJzKY" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Commerce Profit & RTO Calculator | Meesho, Amazon, Flipkart, Shopify</title>
+  <meta name="description" content="Free online e-commerce profit and RTO loss calculator for Meesho, Amazon, Flipkart, and D2C sellers. Calculate real net margins, forward shipping, and return costs accurately.">
+  <meta name="keywords" content="ecommerce profit calculator, meesho calculator, rto loss calculator, amazon seller margin, flipkart profit calculator, return to origin ecommerce, seller margin tool">
+  <meta name="author" content="SellerMargin">
+  <link rel="canonical" href="https://apexaura-studio.github.io/ecommerce-profit-calculator/" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://apexaura-studio.github.io/ecommerce-profit-calculator/">
+  <meta property="og:title" content="E-Commerce Profit & RTO Calculator | Accurate Seller Margins">
+  <meta property="og:description" content="Calculate real net profit and accurate RTO loss impact for Amazon, Meesho, and Flipkart sales in India.">
+
+  <!-- Schema Markup (Structured Data for Google) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "E-Commerce Profit & RTO Calculator",
+    "url": "https://apexaura-studio.github.io/ecommerce-profit-calculator/",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    },
+    "description": "Free accurate profit and RTO loss margin calculator for Meesho, Amazon, Flipkart, and Shopify sellers in India."
+  }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: '#4f46e5',
+            brandHover: '#4338ca'
+          }
         }
-    </script>
-    <style>
-        input[type=number]::-webkit-inner-spin-button, 
-        input[type=number]::-webkit-outer-spin-button { 
-            -webkit-appearance: none; 
-            margin: 0; 
-        }
-    </style>
+      }
+    }
+  </script>
+  <style>
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  </style>
 </head>
 <body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 font-sans transition-colors duration-200">
 
-    <nav class="border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur sticky top-0 z-50">
-        <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
-            <div class="flex items-center space-x-2">
-                <span class="text-2xl">📦</span>
-                <span class="font-bold text-lg text-indigo-600 dark:text-indigo-400">SellerMargin</span>
-            </div>
-            <button id="themeToggle" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-sm border border-slate-300 dark:border-slate-700">
-                🌓 Mode
-            </button>
-        </div>
-    </nav>
+  <!-- Navbar -->
+  <nav class="border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center space-x-2">
+        <span class="text-2xl">📦</span>
+        <span class="font-bold text-lg text-indigo-600 dark:text-indigo-400">SellerMargin</span>
+      </div>
+      <button id="themeToggle" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-sm border border-slate-300 dark:border-slate-700">
+        🌓 Mode
+      </button>
+    </div>
+  </nav>
 
-    <main class="max-w-5xl mx-auto px-4 py-8">
+  <!-- Main Container -->
+  <main class="max-w-5xl mx-auto px-4 py-8">
+    <div class="text-center mb-8">
+      <h1 class="text-3xl md:text-4xl font-extrabold mb-3">E-Commerce Profit & RTO Calculator</h1>
+      <p class="text-slate-600 dark:text-slate-400 text-sm md:text-base max-w-2xl mx-auto">
+        Calculate your exact in-hand net profit, platform fees, and real customer return (RTO) impact across Meesho, Flipkart, Amazon, and D2C.
+      </p>
+    </div>
+
+    <!-- Calculator Card -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <!-- Input Controls -->
+      <div class="lg:col-span-7 bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+        <h2 class="font-semibold text-lg border-b border-slate-200 dark:border-slate-700 pb-2 mb-4">Order & Cost Details</h2>
         
-        <div class="text-center mb-8">
-            <h1 class="text-3xl md:text-4xl font-extrabold mb-3">E-Commerce Profit & RTO Calculator</h1>
-            <p class="text-slate-600 dark:text-slate-400 text-sm md:text-base max-w-2xl mx-auto">
-                Calculate your exact in-hand net profit, platform fees, and real customer return (RTO) impact across Meesho, Flipkart, Amazon, and D2C.
-            </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Selling Price (₹)</label>
+            <input type="number" id="sellingPrice" value="799" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Product Cost / Sourcing (₹)</label>
+            <input type="number" id="sourcingCost" value="250" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          </div>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            
-            <div class="lg:col-span-7 bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
-                <h2 class="font-semibold text-lg border-b border-slate-200 dark:border-slate-700 pb-2">Order & Cost Details</h2>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Selling Price (₹)</label>
-                        <input type="number" id="sellingPrice" value="799" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 dark:bg-slate-700 focus:ring-2 focus:ring-indigo-500 outline-none">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Product Cost / Sourcing (₹)</label>
-                        <input type="number" id="sourcingCost" value="250" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 dark:bg-slate-700 focus:ring-2 focus:ring-indigo-500 outline-none">
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div>
-                        <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Shipping Cost (₹)</label>
-                        <input type="number" id="shippingCost" value="80" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 dark:bg-slate-700 focus:ring-2 focus:ring-indigo-500 outline-none">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Packaging (₹)</label>
-                        <input type="number" id="packagingCost" value="20" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 dark:bg-slate-700 focus:ring-2 focus:ring-indigo-500 outline-none">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Platform/Gateway Fee (%)</label>
-                        <input type="number" id="platformFee" value="5" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 dark:bg-slate-700 focus:ring-2 focus:ring-indigo-500 outline-none">
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-                    <div>
-                        <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Expected Return / RTO Rate (%)</label>
-                        <input type="number" id="rtoRate" value="20" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 dark:bg-slate-700 focus:ring-2 focus:ring-indigo-500 outline-none">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Reverse Shipping on Return (₹)</label>
-                        <input type="number" id="reverseShipping" value="60" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 dark:bg-slate-700 focus:ring-2 focus:ring-indigo-500 outline-none">
-                    </div>
-                </div>
-            </div>
-
-            <div class="lg:col-span-5 space-y-4">
-                <div class="bg-indigo-600 text-white p-6 rounded-2xl shadow-lg">
-                    <span class="text-xs uppercase tracking-wider text-indigo-200">Real Net Profit (Per 100 Orders)</span>
-                    <div class="text-4xl font-black mt-1" id="totalBatchProfit">₹0</div>
-                    <div class="mt-4 pt-4 border-t border-indigo-400/30 flex justify-between items-center text-sm">
-                        <span>Net Profit Per Delivered Order:</span>
-                        <span class="font-bold text-base" id="perDeliveredProfit">₹0</span>
-                    </div>
-                    <div class="flex justify-between items-center text-sm mt-1">
-                        <span>Net Margin (%):</span>
-                        <span class="font-bold text-base" id="netMarginPercent">0%</span>
-                    </div>
-                </div>
-
-                <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-3 text-sm">
-                    <h3 class="font-semibold text-base border-b border-slate-200 dark:border-slate-700 pb-2">Cost Breakdown (100 Orders Model)</h3>
-                    <div class="flex justify-between text-slate-600 dark:text-slate-400">
-                        <span>Total Revenue:</span>
-                        <span class="font-medium text-slate-900 dark:text-slate-100" id="statRevenue">₹0</span>
-                    </div>
-                    <div class="flex justify-between text-slate-600 dark:text-slate-400">
-                        <span>Total Product Cost:</span>
-                        <span class="font-medium text-slate-900 dark:text-slate-100" id="statProductCost">₹0</span>
-                    </div>
-                    <div class="flex justify-between text-slate-600 dark:text-slate-400">
-                        <span>Total Forward Shipping:</span>
-                        <span class="font-medium text-slate-900 dark:text-slate-100" id="statForwardShipping">₹0</span>
-                    </div>
-                    <div class="flex justify-between text-rose-500 font-medium">
-                        <span>RTO / Return Loss:</span>
-                        <span id="statRtoLoss">₹0</span>
-                    </div>
-                </div>
-            </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+          <div>
+            <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Shipping Cost (₹)</label>
+            <input type="number" id="shippingCost" value="80" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Packaging (₹)</label>
+            <input type="number" id="packagingCost" value="20" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Platform/Gateway Fee (%)</label>
+            <input type="number" id="platformFee" value="5" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          </div>
         </div>
 
-        <section class="mt-16 bg-white dark:bg-slate-800 p-6 md:p-10 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-6">
-            <h2 class="text-2xl font-bold">How to Calculate Real E-Commerce Profit Margin?</h2>
-            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-                Most new online sellers fail because they ignore the heavy cost of <strong>RTO (Return to Origin)</strong>. When an order is returned or rejected at the customer's doorstep, the seller still pays for forward shipping, reverse shipping charges, and damaged packaging materials while generating zero revenue.
-            </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+          <div>
+            <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Expected Return / RTO Rate (%)</label>
+            <input type="number" id="rtoRate" value="20" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Reverse Shipping on Return (₹)</label>
+            <input type="number" id="reverseShipping" value="60" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          </div>
+        </div>
+      </div>
 
-            <h3 class="text-xl font-bold pt-4">Frequently Asked Questions (FAQ)</h3>
-            <div class="space-y-4 text-sm">
-                <div class="border border-slate-200 dark:border-slate-700 p-4 rounded-xl">
-                    <h4 class="font-semibold text-base mb-1">What is RTO in e-commerce?</h4>
-                    <p class="text-slate-600 dark:text-slate-400">RTO stands for Return to Origin. It happens when a Cash on Delivery (COD) or prepaid parcel fails to be delivered and returns back to the seller warehouse.</p>
-                </div>
-                <div class="border border-slate-200 dark:border-slate-700 p-4 rounded-xl">
-                    <h4 class="font-semibold text-base mb-1">How can I reduce RTO loss on Meesho & Amazon?</h4>
-                    <p class="text-slate-600 dark:text-slate-400">Verify customer contact details via WhatsApp automated confirmation, encourage prepaid orders by offering small discounts, and avoid risky pincodes with poor courier delivery records.</p>
-                </div>
-            </div>
-        </section>
-    </main>
+      <!-- Output Results -->
+      <div class="lg:col-span-5 space-y-4">
+        <div class="bg-indigo-600 text-white p-6 rounded-2xl shadow-md">
+          <div class="text-xs uppercase tracking-wider font-semibold opacity-80">Real Net Profit (Per 100 Orders)</div>
+          <div class="text-3xl font-black my-2" id="netProfit">₹0</div>
+          <div class="flex justify-between items-center text-xs pt-3 border-t border-indigo-400">
+            <span>Net Profit Per Delivered Order:</span>
+            <span class="font-bold text-sm" id="profitPerOrder">₹0</span>
+          </div>
+          <div class="flex justify-between items-center text-xs mt-1">
+            <span>Net Margin (%):</span>
+            <span class="font-bold text-sm" id="netMargin">0%</span>
+          </div>
+        </div>
 
-    <footer class="text-center py-6 text-xs text-slate-500 dark:text-slate-400 border-t border-slate-200 dark:border-slate-800 mt-12">
-        © 2026 SellerMargin Calculator. All rights reserved. Built for eCommerce entrepreneurs.
-    </footer>
+        <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 text-xs space-y-2">
+          <div class="font-semibold text-sm mb-3">Cost Breakdown (100 Orders Model)</div>
+          <div class="flex justify-between text-slate-600 dark:text-slate-400">
+            <span>Total Revenue:</span>
+            <span class="font-bold text-slate-900 dark:text-slate-100" id="totalRevenue">₹0</span>
+          </div>
+          <div class="flex justify-between text-slate-600 dark:text-slate-400">
+            <span>Total Product Cost:</span>
+            <span class="font-bold text-slate-900 dark:text-slate-100" id="totalProductCost">₹0</span>
+          </div>
+          <div class="flex justify-between text-slate-600 dark:text-slate-400">
+            <span>Total Forward Shipping:</span>
+            <span class="font-bold text-slate-900 dark:text-slate-100" id="totalForwardShipping">₹0</span>
+          </div>
+          <div class="flex justify-between text-rose-500 font-medium">
+            <span>RTO / Return Loss:</span>
+            <span class="font-bold" id="totalRtoLoss">₹0</span>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <script>
-        const inputs = ['sellingPrice', 'sourcingCost', 'shippingCost', 'packagingCost', 'platformFee', 'rtoRate', 'reverseShipping'];
-        
-        function calculate() {
-            const sp = parseFloat(document.getElementById('sellingPrice').value) || 0;
-            const sourcing = parseFloat(document.getElementById('sourcingCost').value) || 0;
-            const shipping = parseFloat(document.getElementById('shippingCost').value) || 0;
-            const packaging = parseFloat(document.getElementById('packagingCost').value) || 0;
-            const feePercent = parseFloat(document.getElementById('platformFee').value) || 0;
-            const rtoRate = parseFloat(document.getElementById('rtoRate').value) || 0;
-            const revShipping = parseFloat(document.getElementById('reverseShipping').value) || 0;
+    <!-- SEO Content Section -->
+    <article class="mt-12 bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 prose dark:prose-invert max-w-none text-sm leading-relaxed">
+      <h2 class="text-xl font-bold mb-3">How to Calculate Real E-Commerce Profit Margin?</h2>
+      <p class="text-slate-600 dark:text-slate-400 mb-4">
+        Most new online sellers fail because they ignore the heavy cost of <strong>RTO (Return to Origin)</strong>. When an order is returned or rejected at the customer's doorstep, the seller still pays for forward shipping, reverse shipping charges, and damaged packaging materials while generating zero revenue.
+      </p>
 
-            const totalOrders = 100;
-            const rtoOrders = (totalOrders * rtoRate) / 100;
-            const deliveredOrders = totalOrders - rtoOrders;
+      <h3 class="text-lg font-bold mb-2">Why RTO Destroys Indian E-Commerce Margins</h3>
+      <p class="text-slate-600 dark:text-slate-400 mb-4">
+        On platforms like Meesho, Flipkart, and Amazon India, Cash on Delivery (COD) orders frequently have a 15% to 35% return rate. If you only calculate profit based on delivered units without factoring in dead freight on returns, your actual balance sheet will show hidden losses.
+      </p>
 
-            // 100 orders financials
-            const totalRevenue = deliveredOrders * sp;
-            const totalPlatformFee = totalRevenue * (feePercent / 100);
-            const totalProductCost = deliveredOrders * sourcing;
-            const totalForwardShipping = totalOrders * shipping;
-            const totalPackaging = totalOrders * packaging;
-            const totalRtoReverseShipping = rtoOrders * revShipping;
+      <h2 class="text-xl font-bold mt-6 mb-3">Frequently Asked Questions (FAQ)</h2>
+      <div class="space-y-3">
+        <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-700/50">
+          <h4 class="font-semibold text-slate-900 dark:text-slate-100">What is RTO in e-commerce?</h4>
+          <p class="text-slate-600 dark:text-slate-400 mt-1">
+            RTO stands for Return to Origin. It happens when a Cash on Delivery (COD) or prepaid parcel fails to be delivered and returns back to the seller warehouse.
+          </p>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-700/50">
+          <h4 class="font-semibold text-slate-900 dark:text-slate-100">How can I reduce RTO loss on Meesho & Amazon?</h4>
+          <p class="text-slate-600 dark:text-slate-400 mt-1">
+            Verify customer contact details via WhatsApp automated confirmation, encourage prepaid orders by offering small discounts, and avoid risky pincodes with poor courier delivery records.
+          </p>
+        </div>
+      </div>
+    </article>
+  </main>
 
-            const totalCosts = totalProductCost + totalForwardShipping + totalPackaging + totalPlatformFee + totalRtoReverseShipping;
-            const netProfit100 = totalRevenue - totalCosts;
+  <script>
+    function calculate() {
+      const price = parseFloat(document.getElementById('sellingPrice').value) || 0;
+      const productCost = parseFloat(document.getElementById('sourcingCost').value) || 0;
+      const forwardShipping = parseFloat(document.getElementById('shippingCost').value) || 0;
+      const packaging = parseFloat(document.getElementById('packagingCost').value) || 0;
+      const platformFeePercent = parseFloat(document.getElementById('platformFee').value) || 0;
+      const rtoPercent = parseFloat(document.getElementById('rtoRate').value) || 0;
+      const reverseShipping = parseFloat(document.getElementById('reverseShipping').value) || 0;
 
-            const perDelivered = deliveredOrders > 0 ? (netProfit100 / deliveredOrders) : 0;
-            const margin = totalRevenue > 0 ? ((netProfit100 / totalRevenue) * 100) : 0;
-            const totalRtoLoss = (rtoOrders * shipping) + (rtoOrders * packaging) + totalRtoReverseShipping;
+      const totalOrders = 100;
+      const rtoOrders = (totalOrders * rtoPercent) / 100;
+      const deliveredOrders = totalOrders - rtoOrders;
 
-            // UI updates
-            document.getElementById('totalBatchProfit').innerText = '₹' + Math.round(netProfit100).toLocaleString('en-IN');
-            document.getElementById('perDeliveredProfit').innerText = '₹' + Math.round(perDelivered).toLocaleString('en-IN');
-            document.getElementById('netMarginPercent').innerText = margin.toFixed(1) + '%';
-            
-            document.getElementById('statRevenue').innerText = '₹' + Math.round(totalRevenue).toLocaleString('en-IN');
-            document.getElementById('statProductCost').innerText = '₹' + Math.round(totalProductCost).toLocaleString('en-IN');
-            document.getElementById('statForwardShipping').innerText = '₹' + Math.round(totalForwardShipping).toLocaleString('en-IN');
-            document.getElementById('statRtoLoss').innerText = '₹' + Math.round(totalRtoLoss).toLocaleString('en-IN');
-        }
+      // Calculations based on 100 orders
+      const totalRevenue = deliveredOrders * price;
+      const totalProductCost = deliveredOrders * productCost;
+      const totalPackagingCost = totalOrders * packaging; // Packaging used for all orders
+      const totalForwardShipping = totalOrders * forwardShipping; // Shipping paid for all dispatched orders
+      const totalPlatformFee = deliveredOrders * (price * (platformFeePercent / 100));
+      const totalReverseShipping = rtoOrders * reverseShipping;
 
-        inputs.forEach(id => {
-            document.getElementById(id).addEventListener('input', calculate);
-        });
+      const rtoLoss = (rtoOrders * forwardShipping) + totalReverseShipping + (rtoOrders * packaging);
+      const totalExpense = totalProductCost + totalPackagingCost + totalForwardShipping + totalPlatformFee + totalReverseShipping;
+      const netProfit = totalRevenue - totalExpense;
+      const profitPerOrder = deliveredOrders > 0 ? (netProfit / deliveredOrders) : 0;
+      const netMargin = totalRevenue > 0 ? ((netProfit / totalRevenue) * 100) : 0;
 
-        // Theme Toggle
-        document.getElementById('themeToggle').addEventListener('click', () => {
-            document.documentElement.classList.toggle('dark');
-        });
+      // Update UI
+      document.getElementById('netProfit').innerText = `₹${Math.round(netProfit).toLocaleString('en-IN')}`;
+      document.getElementById('profitPerOrder').innerText = `₹${Math.round(profitPerOrder).toLocaleString('en-IN')}`;
+      document.getElementById('netMargin').innerText = `${netMargin.toFixed(1)}%`;
+      document.getElementById('totalRevenue').innerText = `₹${Math.round(totalRevenue).toLocaleString('en-IN')}`;
+      document.getElementById('totalProductCost').innerText = `₹${Math.round(totalProductCost).toLocaleString('en-IN')}`;
+      document.getElementById('totalForwardShipping').innerText = `₹${Math.round(totalForwardShipping).toLocaleString('en-IN')}`;
+      document.getElementById('totalRtoLoss').innerText = `₹${Math.round(rtoLoss).toLocaleString('en-IN')}`;
+    }
 
-        // Initial Calculation
-        calculate();
-    </script>
+    document.querySelectorAll('input').forEach(input => {
+      input.addEventListener('input', calculate);
+    });
+
+    // Dark Mode Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+    });
+
+    calculate();
+  </script>
 </body>
 </html>
