@@ -80,13 +80,13 @@
       </p>
     </div>
 
-    <!-- 1-Click Presets -->
+    <!-- 1-Click Presets with Clear Active Highlights -->
     <div class="flex flex-wrap items-center justify-center gap-2 mb-6">
       <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider mr-2">Quick Presets:</span>
-      <button onclick="applyPreset('meesho')" class="px-3 py-1.5 text-xs font-semibold rounded-full bg-pink-50 text-pink-600 border border-pink-200 hover:bg-pink-100 dark:bg-pink-950/40 dark:text-pink-300 dark:border-pink-800 transition">Meesho (0% Fee)</button>
-      <button onclick="applyPreset('amazon')" class="px-3 py-1.5 text-xs font-semibold rounded-full bg-amber-50 text-amber-600 border border-amber-200 hover:bg-amber-100 dark:bg-amber-950/40 dark:text-amber-300 dark:border-amber-800 transition">Amazon (~12% Fee)</button>
-      <button onclick="applyPreset('flipkart')" class="px-3 py-1.5 text-xs font-semibold rounded-full bg-blue-50 text-blue-600 border border-blue-200 hover:bg-blue-100 dark:bg-blue-950/40 dark:text-blue-300 dark:border-blue-800 transition">Flipkart (~10% Fee)</button>
-      <button onclick="applyPreset('d2c')" class="px-3 py-1.5 text-xs font-semibold rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200 hover:bg-emerald-100 dark:bg-emerald-950/40 dark:text-emerald-300 dark:border-emerald-800 transition">Shopify / D2C (2% PG)</button>
+      <button id="btn-meesho" onclick="applyPreset('meesho')" class="preset-btn px-4 py-2 text-xs font-bold rounded-xl border transition-all duration-200 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-700 shadow-sm hover:border-pink-500">Meesho (0% Fee)</button>
+      <button id="btn-amazon" onclick="applyPreset('amazon')" class="preset-btn px-4 py-2 text-xs font-bold rounded-xl border transition-all duration-200 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-700 shadow-sm hover:border-amber-500">Amazon (~12% Fee)</button>
+      <button id="btn-flipkart" onclick="applyPreset('flipkart')" class="preset-btn px-4 py-2 text-xs font-bold rounded-xl border transition-all duration-200 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-700 shadow-sm hover:border-blue-500">Flipkart (~10% Fee)</button>
+      <button id="btn-d2c" onclick="applyPreset('d2c')" class="preset-btn px-4 py-2 text-xs font-bold rounded-xl border transition-all duration-200 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-700 shadow-sm hover:border-emerald-500">Shopify / D2C (2% PG)</button>
     </div>
 
     <!-- Calculator Card -->
@@ -109,7 +109,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
           <div>
             <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Shipping Cost (₹)</label>
-            <input type="number" id="shippingCost" value="80" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            <input type="number" id="shippingCost" value="70" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
           </div>
           <div>
             <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Packaging (₹)</label>
@@ -117,18 +117,18 @@
           </div>
           <div>
             <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Platform/Gateway Fee (%)</label>
-            <input type="number" id="platformFee" value="5" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            <input type="number" id="platformFee" value="0" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
           </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
           <div>
             <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Expected Return / RTO Rate (%)</label>
-            <input type="number" id="rtoRate" value="20" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            <input type="number" id="rtoRate" value="25" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
           </div>
           <div>
             <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Reverse Shipping on Return (₹)</label>
-            <input type="number" id="reverseShipping" value="60" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            <input type="number" id="reverseShipping" value="0" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
           </div>
         </div>
       </div>
@@ -178,7 +178,7 @@
           </button>
         </div>
 
-        <!-- Affiliate / Ad Space Slot -->
+        <!-- Affiliate / Pro Tip Slot -->
         <div class="p-4 rounded-xl border border-dashed border-indigo-300 dark:border-indigo-800 bg-indigo-50/50 dark:bg-indigo-950/20 text-center">
           <div class="text-[11px] font-semibold text-indigo-700 dark:text-indigo-400">💡 Pro Seller Tip</div>
           <p class="text-[11px] text-slate-600 dark:text-slate-400 mt-1">High RTO killing your margin? Connect automated WhatsApp order verification to reduce return rates by up to 40%.</p>
@@ -252,27 +252,41 @@
       document.getElementById('totalRtoLoss').innerText = `₹${Math.round(rtoLoss).toLocaleString('en-IN')}`;
     }
 
+    const defaultBtnClass = "preset-btn px-4 py-2 text-xs font-bold rounded-xl border transition-all duration-200 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-700 shadow-sm";
+
+    function resetPresetButtons() {
+      document.querySelectorAll('.preset-btn').forEach(btn => {
+        btn.className = defaultBtnClass;
+      });
+    }
+
     function applyPreset(platform) {
+      resetPresetButtons();
+
       if (platform === 'meesho') {
         document.getElementById('platformFee').value = '0';
         document.getElementById('rtoRate').value = '25';
         document.getElementById('shippingCost').value = '70';
-        document.getElementById('reverseShipping').value = '0'; // Meesho doesn't charge reverse freight on wrong/defect
+        document.getElementById('reverseShipping').value = '0';
+        document.getElementById('btn-meesho').className = "preset-btn px-4 py-2 text-xs font-bold rounded-xl border-2 border-pink-500 bg-pink-600 text-white shadow-md scale-105 transition-all duration-200";
       } else if (platform === 'amazon') {
         document.getElementById('platformFee').value = '12';
         document.getElementById('rtoRate').value = '18';
         document.getElementById('shippingCost').value = '85';
         document.getElementById('reverseShipping').value = '65';
+        document.getElementById('btn-amazon').className = "preset-btn px-4 py-2 text-xs font-bold rounded-xl border-2 border-amber-500 bg-amber-500 text-white shadow-md scale-105 transition-all duration-200";
       } else if (platform === 'flipkart') {
         document.getElementById('platformFee').value = '10';
         document.getElementById('rtoRate').value = '20';
         document.getElementById('shippingCost').value = '75';
         document.getElementById('reverseShipping').value = '60';
+        document.getElementById('btn-flipkart').className = "preset-btn px-4 py-2 text-xs font-bold rounded-xl border-2 border-blue-500 bg-blue-600 text-white shadow-md scale-105 transition-all duration-200";
       } else if (platform === 'd2c') {
-        document.getElementById('platformFee').value = '2'; // Razorpay / Cashfree 2%
+        document.getElementById('platformFee').value = '2';
         document.getElementById('rtoRate').value = '28';
         document.getElementById('shippingCost').value = '90';
         document.getElementById('reverseShipping').value = '80';
+        document.getElementById('btn-d2c').className = "preset-btn px-4 py-2 text-xs font-bold rounded-xl border-2 border-emerald-500 bg-emerald-600 text-white shadow-md scale-105 transition-all duration-200";
       }
       calculate();
     }
@@ -302,7 +316,10 @@
     }
 
     document.querySelectorAll('input').forEach(input => {
-      input.addEventListener('input', calculate);
+      input.addEventListener('input', () => {
+        resetPresetButtons();
+        calculate();
+      });
     });
 
     const themeToggle = document.getElementById('themeToggle');
@@ -310,7 +327,8 @@
       document.documentElement.classList.toggle('dark');
     });
 
-    calculate();
+    // Default preset Meesho selected on start
+    applyPreset('meesho');
   </script>
 </body>
 </html>
