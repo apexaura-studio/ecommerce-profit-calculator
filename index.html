@@ -10,13 +10,13 @@
   <meta name="author" content="SellerMargin">
   <link rel="canonical" href="https://apexaura-studio.github.io/ecommerce-profit-calculator/" />
 
-  <!-- Open Graph / Facebook -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://apexaura-studio.github.io/ecommerce-profit-calculator/">
   <meta property="og:title" content="E-Commerce Profit & RTO Calculator | Accurate Seller Margins">
   <meta property="og:description" content="Calculate real net profit and accurate RTO loss impact for Amazon, Meesho, and Flipkart sales in India.">
 
-  <!-- Schema Markup (Structured Data for Google) -->
+  <!-- Schema Markup -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -73,11 +73,20 @@
 
   <!-- Main Container -->
   <main class="max-w-5xl mx-auto px-4 py-8">
-    <div class="text-center mb-8">
+    <div class="text-center mb-6">
       <h1 class="text-3xl md:text-4xl font-extrabold mb-3">E-Commerce Profit & RTO Calculator</h1>
       <p class="text-slate-600 dark:text-slate-400 text-sm md:text-base max-w-2xl mx-auto">
-        Calculate your exact in-hand net profit, platform fees, and real customer return (RTO) impact across Meesho, Flipkart, Amazon, and D2C.
+        Calculate exact in-hand net profit, platform referral fees, and real customer return (RTO) impact across India's top marketplaces.
       </p>
+    </div>
+
+    <!-- 1-Click Presets -->
+    <div class="flex flex-wrap items-center justify-center gap-2 mb-6">
+      <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider mr-2">Quick Presets:</span>
+      <button onclick="applyPreset('meesho')" class="px-3 py-1.5 text-xs font-semibold rounded-full bg-pink-50 text-pink-600 border border-pink-200 hover:bg-pink-100 dark:bg-pink-950/40 dark:text-pink-300 dark:border-pink-800 transition">Meesho (0% Fee)</button>
+      <button onclick="applyPreset('amazon')" class="px-3 py-1.5 text-xs font-semibold rounded-full bg-amber-50 text-amber-600 border border-amber-200 hover:bg-amber-100 dark:bg-amber-950/40 dark:text-amber-300 dark:border-amber-800 transition">Amazon (~12% Fee)</button>
+      <button onclick="applyPreset('flipkart')" class="px-3 py-1.5 text-xs font-semibold rounded-full bg-blue-50 text-blue-600 border border-blue-200 hover:bg-blue-100 dark:bg-blue-950/40 dark:text-blue-300 dark:border-blue-800 transition">Flipkart (~10% Fee)</button>
+      <button onclick="applyPreset('d2c')" class="px-3 py-1.5 text-xs font-semibold rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200 hover:bg-emerald-100 dark:bg-emerald-950/40 dark:text-emerald-300 dark:border-emerald-800 transition">Shopify / D2C (2% PG)</button>
     </div>
 
     <!-- Calculator Card -->
@@ -158,6 +167,22 @@
             <span class="font-bold" id="totalRtoLoss">₹0</span>
           </div>
         </div>
+
+        <!-- Share Actions -->
+        <div class="grid grid-cols-2 gap-3">
+          <button onclick="shareWhatsApp()" class="flex items-center justify-center space-x-2 py-2.5 px-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-medium text-xs shadow-sm transition">
+            <span>📲 Share WhatsApp</span>
+          </button>
+          <button onclick="copySummary()" id="copyBtn" class="flex items-center justify-center space-x-2 py-2.5 px-4 bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-800 dark:text-slate-100 rounded-xl font-medium text-xs transition">
+            <span>📋 Copy Summary</span>
+          </button>
+        </div>
+
+        <!-- Affiliate / Ad Space Slot -->
+        <div class="p-4 rounded-xl border border-dashed border-indigo-300 dark:border-indigo-800 bg-indigo-50/50 dark:bg-indigo-950/20 text-center">
+          <div class="text-[11px] font-semibold text-indigo-700 dark:text-indigo-400">💡 Pro Seller Tip</div>
+          <p class="text-[11px] text-slate-600 dark:text-slate-400 mt-1">High RTO killing your margin? Connect automated WhatsApp order verification to reduce return rates by up to 40%.</p>
+        </div>
       </div>
     </div>
 
@@ -205,11 +230,10 @@
       const rtoOrders = (totalOrders * rtoPercent) / 100;
       const deliveredOrders = totalOrders - rtoOrders;
 
-      // Calculations based on 100 orders
       const totalRevenue = deliveredOrders * price;
       const totalProductCost = deliveredOrders * productCost;
-      const totalPackagingCost = totalOrders * packaging; // Packaging used for all orders
-      const totalForwardShipping = totalOrders * forwardShipping; // Shipping paid for all dispatched orders
+      const totalPackagingCost = totalOrders * packaging;
+      const totalForwardShipping = totalOrders * forwardShipping;
       const totalPlatformFee = deliveredOrders * (price * (platformFeePercent / 100));
       const totalReverseShipping = rtoOrders * reverseShipping;
 
@@ -219,7 +243,6 @@
       const profitPerOrder = deliveredOrders > 0 ? (netProfit / deliveredOrders) : 0;
       const netMargin = totalRevenue > 0 ? ((netProfit / totalRevenue) * 100) : 0;
 
-      // Update UI
       document.getElementById('netProfit').innerText = `₹${Math.round(netProfit).toLocaleString('en-IN')}`;
       document.getElementById('profitPerOrder').innerText = `₹${Math.round(profitPerOrder).toLocaleString('en-IN')}`;
       document.getElementById('netMargin').innerText = `${netMargin.toFixed(1)}%`;
@@ -229,11 +252,59 @@
       document.getElementById('totalRtoLoss').innerText = `₹${Math.round(rtoLoss).toLocaleString('en-IN')}`;
     }
 
+    function applyPreset(platform) {
+      if (platform === 'meesho') {
+        document.getElementById('platformFee').value = '0';
+        document.getElementById('rtoRate').value = '25';
+        document.getElementById('shippingCost').value = '70';
+        document.getElementById('reverseShipping').value = '0'; // Meesho doesn't charge reverse freight on wrong/defect
+      } else if (platform === 'amazon') {
+        document.getElementById('platformFee').value = '12';
+        document.getElementById('rtoRate').value = '18';
+        document.getElementById('shippingCost').value = '85';
+        document.getElementById('reverseShipping').value = '65';
+      } else if (platform === 'flipkart') {
+        document.getElementById('platformFee').value = '10';
+        document.getElementById('rtoRate').value = '20';
+        document.getElementById('shippingCost').value = '75';
+        document.getElementById('reverseShipping').value = '60';
+      } else if (platform === 'd2c') {
+        document.getElementById('platformFee').value = '2'; // Razorpay / Cashfree 2%
+        document.getElementById('rtoRate').value = '28';
+        document.getElementById('shippingCost').value = '90';
+        document.getElementById('reverseShipping').value = '80';
+      }
+      calculate();
+    }
+
+    function getSummaryText() {
+      const price = document.getElementById('sellingPrice').value;
+      const profit = document.getElementById('profitPerOrder').innerText;
+      const margin = document.getElementById('netMargin').innerText;
+      const rto = document.getElementById('rtoRate').value;
+      const totalProfit = document.getElementById('netProfit').innerText;
+      return `📊 *E-Commerce Margin Breakdown*\n- Selling Price: ₹${price}\n- Profit/Delivered Order: ${profit}\n- Net Margin: ${margin}\n- RTO Rate: ${rto}%\n- Net Profit (100 Orders): ${totalProfit}\n\n👉 Calculate yours free: https://apexaura-studio.github.io/ecommerce-profit-calculator/`;
+    }
+
+    function shareWhatsApp() {
+      const text = encodeURIComponent(getSummaryText());
+      window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+    }
+
+    function copySummary() {
+      navigator.clipboard.writeText(getSummaryText()).then(() => {
+        const btn = document.getElementById('copyBtn');
+        btn.innerText = '✅ Copied!';
+        setTimeout(() => {
+          btn.innerHTML = '<span>📋 Copy Summary</span>';
+        }, 2000);
+      });
+    }
+
     document.querySelectorAll('input').forEach(input => {
       input.addEventListener('input', calculate);
     });
 
-    // Dark Mode Toggle
     const themeToggle = document.getElementById('themeToggle');
     themeToggle.addEventListener('click', () => {
       document.documentElement.classList.toggle('dark');
