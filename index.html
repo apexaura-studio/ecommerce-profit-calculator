@@ -4,17 +4,19 @@
   <meta charset="UTF-8">
   <meta name="google-site-verification" content="LHTYo-8imAr00wkV25ZEfYspCvQrQdKGj3v-lKgJzKY" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SellerMargin | E-Commerce Profit, RTO & Return Damage Analyzer</title>
-  <meta name="description" content="Free e-commerce seller suite for Meesho, Amazon, Flipkart, and Shopify. Calculate net margin, RTO dead freight, and customer return damage/fraud losses accurately.">
-  <meta name="keywords" content="ecommerce profit calculator, rto loss calculator, return damage analyzer, meesho profit calculator, amazon seller margin, ecommerce fraud loss">
+  <title>SellerMargin | Complete E-Commerce Profit, Risk & ROI Suite</title>
+  <meta name="description" content="Free 3-in-1 e-commerce seller suite for Meesho, Amazon, Flipkart, and Shopify. Calculate net profit, return damage fraud, and COD vs prepaid discount ROI.">
+  <meta name="keywords" content="ecommerce profit calculator, rto loss calculator, return damage analyzer, cod vs prepaid discount calculator, meesho profit calculator, amazon seller margin">
   <meta name="author" content="SellerMargin">
   <link rel="canonical" href="https://apexaura-studio.github.io/ecommerce-profit-calculator/" />
 
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://apexaura-studio.github.io/ecommerce-profit-calculator/">
-  <meta property="og:title" content="SellerMargin | Complete E-Commerce Seller Profit & Risk Suite">
-  <meta property="og:description" content="Calculate real net profit, platform referral fees, and customer return damage loss across Indian marketplaces.">
+  <meta property="og:title" content="SellerMargin | 3-in-1 E-Commerce Seller Profit & Optimization Suite">
+  <meta property="og:description" content="Calculate real net margin, return fraud erosion, and COD to prepaid break-even discount models.">
 
+  <!-- Schema Markup -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -55,6 +57,7 @@
 </head>
 <body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 font-sans transition-colors duration-200 min-h-screen flex flex-col justify-between">
 
+  <!-- Navbar -->
   <nav class="border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur sticky top-0 z-50">
     <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
       <div class="flex items-center space-x-2">
@@ -71,19 +74,25 @@
     </div>
   </nav>
 
+  <!-- Main Container -->
   <main class="max-w-5xl mx-auto px-4 py-6 flex-grow">
     
-    <div class="flex justify-center mb-6">
-      <div class="inline-flex p-1 bg-slate-200 dark:bg-slate-800 rounded-2xl shadow-inner border border-slate-300 dark:border-slate-700">
-        <button id="tab-tool1" onclick="switchTool('tool1')" class="px-5 py-2.5 text-xs md:text-sm font-bold rounded-xl transition-all duration-200 bg-indigo-600 text-white shadow">
-          📦 Profit & RTO Calculator
+    <!-- 3-Tool Switcher Tabs -->
+    <div class="flex justify-center mb-6 overflow-x-auto pb-1">
+      <div class="inline-flex p-1 bg-slate-200 dark:bg-slate-800 rounded-2xl shadow-inner border border-slate-300 dark:border-slate-700 gap-1">
+        <button id="tab-tool1" onclick="switchTool('tool1')" class="px-4 py-2 text-xs md:text-sm font-bold rounded-xl transition-all duration-200 bg-indigo-600 text-white shadow whitespace-nowrap">
+          📦 Profit & RTO
         </button>
-        <button id="tab-tool2" onclick="switchTool('tool2')" class="px-5 py-2.5 text-xs md:text-sm font-bold rounded-xl transition-all duration-200 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
-          🛡️ Return Damage & Abuse Analyzer
+        <button id="tab-tool2" onclick="switchTool('tool2')" class="px-4 py-2 text-xs md:text-sm font-bold rounded-xl transition-all duration-200 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white whitespace-nowrap">
+          🛡️ Return Damage & Abuse
+        </button>
+        <button id="tab-tool3" onclick="switchTool('tool3')" class="px-4 py-2 text-xs md:text-sm font-bold rounded-xl transition-all duration-200 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white whitespace-nowrap">
+          ⚡ COD vs Prepaid ROI
         </button>
       </div>
     </div>
 
+    <!-- ==================== TOOL 1: PROFIT & RTO CALCULATOR ==================== -->
     <section id="tool1-section">
       <div class="text-center mb-6">
         <h1 class="text-3xl md:text-4xl font-extrabold mb-2">E-Commerce Profit & RTO Calculator</h1>
@@ -92,6 +101,7 @@
         </p>
       </div>
 
+      <!-- 1-Click Presets -->
       <div class="flex flex-wrap items-center justify-center gap-2 mb-6">
         <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider mr-2">Quick Presets:</span>
         <button id="btn-meesho" onclick="applyPreset('meesho')" class="preset-btn px-4 py-2 text-xs font-bold rounded-xl border transition-all duration-200 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-700 shadow-sm">Meesho (0% Fee)</button>
@@ -101,6 +111,7 @@
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <!-- Inputs -->
         <div class="lg:col-span-7 bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
           <h2 class="font-semibold text-lg border-b border-slate-200 dark:border-slate-700 pb-2 mb-4">Order & Cost Details</h2>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -139,6 +150,7 @@
           </div>
         </div>
 
+        <!-- Outputs -->
         <div class="lg:col-span-5 space-y-4">
           <div class="bg-indigo-600 text-white p-6 rounded-2xl shadow-md">
             <div class="text-xs uppercase tracking-wider font-semibold opacity-80">Real Net Profit (Per 100 Orders)</div>
@@ -185,6 +197,7 @@
       </div>
     </section>
 
+    <!-- ==================== TOOL 2: RETURN DAMAGE & FRAUD ANALYZER ==================== -->
     <section id="tool2-section" class="hidden">
       <div class="text-center mb-6">
         <h1 class="text-3xl md:text-4xl font-extrabold mb-2 text-rose-600 dark:text-rose-400">Customer Return Damage & Fraud Analyzer</h1>
@@ -194,6 +207,7 @@
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <!-- Inputs -->
         <div class="lg:col-span-7 bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
           <h2 class="font-semibold text-lg border-b border-slate-200 dark:border-slate-700 pb-2 mb-4 text-slate-900 dark:text-slate-100">Monthly Volume & Return Parameters</h2>
           
@@ -235,6 +249,7 @@
           </div>
         </div>
 
+        <!-- Outputs -->
         <div class="lg:col-span-5 space-y-4">
           <div class="bg-rose-600 text-white p-6 rounded-2xl shadow-md">
             <div class="text-xs uppercase tracking-wider font-semibold opacity-80">Total Dead Inventory Loss / Month</div>
@@ -278,35 +293,135 @@
       </div>
     </section>
 
+    <!-- ==================== TOOL 3: COD VS PREPAID DISCOUNT OPTIMIZER ==================== -->
+    <section id="tool3-section" class="hidden">
+      <div class="text-center mb-6">
+        <h1 class="text-3xl md:text-4xl font-extrabold mb-2 text-emerald-600 dark:text-emerald-400">COD vs. Prepaid Discount Optimizer</h1>
+        <p class="text-slate-600 dark:text-slate-400 text-xs md:text-sm max-w-2xl mx-auto">
+          Calculate how much discount you can offer for online payments to kill RTO losses and maximize net cash in-hand.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <!-- Inputs -->
+        <div class="lg:col-span-7 bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+          <h2 class="font-semibold text-lg border-b border-slate-200 dark:border-slate-700 pb-2 mb-4 text-slate-900 dark:text-slate-100">Order Economics & Discount Strategy</h2>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Product Selling Price (₹)</label>
+              <input type="number" id="t3_sellingPrice" value="899" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Product Sourcing Cost (₹)</label>
+              <input type="number" id="t3_sourcingCost" value="300" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+            <div>
+              <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Forward + RTO Reverse Shipping (₹)</label>
+              <input type="number" id="t3_totalShipping" value="140" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+              <span class="text-[10px] text-slate-400">Total freight lost on 1 RTO order</span>
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">COD Collection / Carrier Fee (₹)</label>
+              <input type="number" id="t3_codFee" value="40" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+              <span class="text-[10px] text-slate-400">Courier COD extra handling fee</span>
+            </div>
+          </div>
+
+          <h3 class="font-semibold text-sm border-b border-slate-200 dark:border-slate-700 pb-2 mt-6 mb-3 text-emerald-500">Prepaid Incentive Strategy</h3>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Prepaid Discount Given (₹)</label>
+              <input type="number" id="t3_discount" value="50" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+              <span class="text-[10px] text-slate-400">Discount offered to customer for online pay</span>
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Current COD RTO Rate (%)</label>
+              <input type="number" id="t3_codRto" value="30" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+              <span class="text-[10px] text-slate-400">Prepaid RTO is standard 3%-5%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Outputs -->
+        <div class="lg:col-span-5 space-y-4">
+          <div class="bg-emerald-600 text-white p-6 rounded-2xl shadow-md">
+            <div class="text-xs uppercase tracking-wider font-semibold opacity-80">Net Profit Gain (Per 100 Converted Orders)</div>
+            <div class="text-3xl font-black my-2" id="t3_netGain">₹0</div>
+            <div class="flex justify-between items-center text-xs pt-3 border-t border-emerald-400">
+              <span>RTO Shipping Saved:</span>
+              <span class="font-bold text-sm" id="t3_shippingSaved">₹0</span>
+            </div>
+            <div class="flex justify-between items-center text-xs mt-1">
+              <span>COD Courier Charges Saved:</span>
+              <span class="font-bold text-sm" id="t3_codSaved">₹0</span>
+            </div>
+          </div>
+
+          <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 text-xs space-y-2">
+            <div class="font-semibold text-sm mb-3">Prepaid vs COD Comparison (100 Orders)</div>
+            <div class="flex justify-between text-slate-600 dark:text-slate-400">
+              <span>Discounts Given to Customers:</span>
+              <span class="font-bold text-rose-500" id="t3_totalDiscountGiven">₹0</span>
+            </div>
+            <div class="flex justify-between text-slate-600 dark:text-slate-400">
+              <span>Gross Friction Savings:</span>
+              <span class="font-bold text-slate-900 dark:text-slate-100" id="t3_grossSavings">₹0</span>
+            </div>
+            <div class="flex justify-between text-emerald-600 dark:text-emerald-400 font-semibold pt-2 border-t border-slate-200 dark:border-slate-700">
+              <span>Max Safe Discount Allowed:</span>
+              <span class="font-bold text-sm" id="t3_maxSafeDiscount">₹0/order</span>
+            </div>
+            <p class="text-[10px] text-slate-400 pt-1">Offering any discount below this safe limit will always increase your overall net profit.</p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <button onclick="shareWhatsAppTool3()" class="flex items-center justify-center space-x-2 py-2.5 px-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-medium text-xs shadow-sm transition">
+              <span>📲 Share ROI Report</span>
+            </button>
+            <button onclick="copySummaryTool3()" id="copyBtn3" class="flex items-center justify-center space-x-2 py-2.5 px-4 bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-800 dark:text-slate-100 rounded-xl font-medium text-xs transition">
+              <span>📋 Copy Summary</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEO Content Section -->
     <article class="mt-12 bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 prose dark:prose-invert max-w-none text-sm leading-relaxed">
-      <h2 class="text-xl font-bold mb-3">Understanding E-Commerce Returns, Dead Freight & Inventory Fraud</h2>
+      <h2 class="text-xl font-bold mb-3">Complete E-Commerce Profit, Return & Payment Optimization Guide</h2>
       <p class="text-slate-600 dark:text-slate-400 mb-4">
-        E-commerce sellers across Meesho, Amazon India, Flipkart, and Shopify face two major profit killers: <strong>RTO (Courier Return to Origin)</strong> and <strong>Customer Return Abuse (Damage/Fraud)</strong>. While basic calculators only subtract freight charges, real profitability depends on calculating dead inventory write-offs.
+        To run a successful D2C brand or marketplace store in India, calculating standard product margins is only the first step. Sellers must actively manage <strong>RTO freight drain</strong>, <strong>inventory write-offs</strong>, and optimize <strong>Prepaid conversion incentives</strong>.
       </p>
 
-      <h3 class="text-lg font-bold mb-2">How Customer Return Abuse Silently Destroys Margins</h3>
+      <h3 class="text-lg font-bold mb-2">Why Giving Prepaid Discounts Makes You More Money</h3>
       <p class="text-slate-600 dark:text-slate-400 mb-4">
-        When high-value apparel, electronics, or cosmetics are returned used, damaged, or swapped with fake items, the seller absorbs 100% of the sourcing cost. To maintain healthy cash flow, this hidden erosion must be built directly into your listing markup.
+        COD orders carry high courier handling surcharges and an average 25%–35% failure rate. By offering an instant ₹30–₹50 discount for UPI/Card payments, you avoid reverse shipping fees, courier COD fees, and locked capital—resulting in significantly higher net profits.
       </p>
 
       <h2 class="text-xl font-bold mt-6 mb-3">Frequently Asked Questions (FAQ)</h2>
       <div class="space-y-3">
         <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-700/50">
-          <h4 class="font-semibold text-slate-900 dark:text-slate-100">What is Customer Return Abuse in Indian E-Commerce?</h4>
+          <h4 class="font-semibold text-slate-900 dark:text-slate-100">What is the difference between RTO and Customer Return?</h4>
           <p class="text-slate-600 dark:text-slate-400 mt-1">
-            Return abuse occurs when a customer returns a product after using it, returns a counterfeit/damaged item, or returns an empty package while claiming a full refund from the platform.
+            RTO (Return to Origin) occurs when an undelivered parcel comes back from the customer doorstep before delivery. Customer Return happens after the customer accepts, opens, and later requests a return.
           </p>
         </div>
         <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-700/50">
-          <h4 class="font-semibold text-slate-900 dark:text-slate-100">How do I protect my margin against return fraud?</h4>
+          <h4 class="font-semibold text-slate-900 dark:text-slate-100">How do I calculate the maximum safe discount for prepaid orders?</h4>
           <p class="text-slate-600 dark:text-slate-400 mt-1">
-            Use tamper-evident security tags, maintain barcode-scanned packing video logs, file platform SPF (Seller Protection Fund) claims within 48 hours, and adjust your base price using our Safe Selling Price model.
+            Calculate your COD surcharge plus expected RTO shipping loss per unit. Any discount lower than this combined total directly adds to your bottom-line profit.
           </p>
         </div>
       </div>
     </article>
   </main>
 
+  <!-- Legal & AdSense Compliant Footer -->
   <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 mt-12 py-6">
     <div class="max-w-5xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500 dark:text-slate-400 space-y-4 md:space-y-0">
       <div>
@@ -321,6 +436,7 @@
     </div>
   </footer>
 
+  <!-- MODALS -->
   <div id="aboutModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center p-4 z-50">
     <div class="bg-white dark:bg-slate-800 max-w-lg w-full p-6 rounded-2xl max-h-[85vh] overflow-y-auto">
       <div class="flex justify-between items-center pb-3 border-b border-slate-200 dark:border-slate-700">
@@ -328,7 +444,7 @@
         <button onclick="closeModal('aboutModal')" class="text-xl font-bold">&times;</button>
       </div>
       <div class="text-xs leading-relaxed text-slate-600 dark:text-slate-300 mt-4 space-y-3">
-        <p><strong>SellerMargin</strong> by Apexaura Studio is a dedicated suite of free micro-tools designed specifically for Indian e-commerce sellers across Meesho, Amazon, Flipkart, and Shopify.</p>
+        <p><strong>SellerMargin</strong> by Apexaura Studio is a dedicated 3-in-1 suite of free micro-tools designed specifically for Indian e-commerce sellers across Meesho, Amazon, Flipkart, and Shopify.</p>
         <p>Our mission is to help small and medium D2C business owners understand their true financial margins, dead freight, and return losses without expensive ERP software.</p>
       </div>
     </div>
@@ -359,7 +475,7 @@
       </div>
       <div class="text-xs leading-relaxed text-slate-600 dark:text-slate-300 mt-4 space-y-3">
         <p>At SellerMargin, accessible from https://apexaura-studio.github.io/ecommerce-profit-calculator/, your privacy is one of our main priorities.</p>
-        <p><strong>Data Processing:</strong> All financial and unit calculations happen locally inside your web browser. We do NOT store your selling price, supplier costs, or sales data on any remote server.</p>
+        <p><strong>Data Processing:</strong> All calculations happen locally inside your web browser. We do NOT store your selling price, supplier costs, or sales data on any remote server.</p>
       </div>
     </div>
   </div>
@@ -378,28 +494,39 @@
   </div>
 
   <script>
-    // TAB SWITCHER
+    // 3-WAY TAB SWITCHER
     function switchTool(tool) {
       const tab1 = document.getElementById('tab-tool1');
       const tab2 = document.getElementById('tab-tool2');
+      const tab3 = document.getElementById('tab-tool3');
       const sec1 = document.getElementById('tool1-section');
       const sec2 = document.getElementById('tool2-section');
+      const sec3 = document.getElementById('tool3-section');
+
+      // Reset all tab styles
+      const inactiveClass = "px-4 py-2 text-xs md:text-sm font-bold rounded-xl transition-all duration-200 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white whitespace-nowrap";
+      tab1.className = inactiveClass;
+      tab2.className = inactiveClass;
+      tab3.className = inactiveClass;
+      sec1.classList.add('hidden');
+      sec2.classList.add('hidden');
+      sec3.classList.add('hidden');
 
       if (tool === 'tool1') {
-        tab1.className = "px-5 py-2.5 text-xs md:text-sm font-bold rounded-xl transition-all duration-200 bg-indigo-600 text-white shadow";
-        tab2.className = "px-5 py-2.5 text-xs md:text-sm font-bold rounded-xl transition-all duration-200 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white";
+        tab1.className = "px-4 py-2 text-xs md:text-sm font-bold rounded-xl transition-all duration-200 bg-indigo-600 text-white shadow whitespace-nowrap";
         sec1.classList.remove('hidden');
-        sec2.classList.add('hidden');
-      } else {
-        tab2.className = "px-5 py-2.5 text-xs md:text-sm font-bold rounded-xl transition-all duration-200 bg-rose-600 text-white shadow";
-        tab1.className = "px-5 py-2.5 text-xs md:text-sm font-bold rounded-xl transition-all duration-200 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white";
+      } else if (tool === 'tool2') {
+        tab2.className = "px-4 py-2 text-xs md:text-sm font-bold rounded-xl transition-all duration-200 bg-rose-600 text-white shadow whitespace-nowrap";
         sec2.classList.remove('hidden');
-        sec1.classList.add('hidden');
         calculateTool2();
+      } else if (tool === 'tool3') {
+        tab3.className = "px-4 py-2 text-xs md:text-sm font-bold rounded-xl transition-all duration-200 bg-emerald-600 text-white shadow whitespace-nowrap";
+        sec3.classList.remove('hidden');
+        calculateTool3();
       }
     }
 
-    // TOOL 1 LOGIC
+    // ==================== TOOL 1 LOGIC ====================
     function calculateTool1() {
       const price = parseFloat(document.getElementById('sellingPrice').value) || 0;
       const productCost = parseFloat(document.getElementById('sourcingCost').value) || 0;
@@ -545,6 +672,54 @@
       });
     }
 
+    // ==================== TOOL 3 LOGIC (COD VS PREPAID) ====================
+    function calculateTool3() {
+      const price = parseFloat(document.getElementById('t3_sellingPrice').value) || 0;
+      const totalShippingLossPerRto = parseFloat(document.getElementById('t3_totalShipping').value) || 0;
+      const codCarrierFee = parseFloat(document.getElementById('t3_codFee').value) || 0;
+      const discountGiven = parseFloat(document.getElementById('t3_discount').value) || 0;
+      const codRtoRate = parseFloat(document.getElementById('t3_codRto').value) || 0;
+
+      const baseOrders = 100;
+      const prepaidRtoRate = 4; // Industry standard 4% return on prepaid
+
+      // Shipping and COD costs saved per 100 orders
+      const avoidedRtoParcels = ((codRtoRate - prepaidRtoRate) / 100) * baseOrders;
+      const shippingSaved = avoidedRtoParcels * totalShippingLossPerRto;
+      const codFeesSaved = baseOrders * codCarrierFee;
+      const grossSavings = shippingSaved + codFeesSaved;
+
+      const totalDiscountGiven = baseOrders * discountGiven;
+      const netGain = grossSavings - totalDiscountGiven;
+      const maxSafeDiscount = Math.round(grossSavings / baseOrders);
+
+      document.getElementById('t3_netGain').innerText = `+₹${Math.round(netGain).toLocaleString('en-IN')}`;
+      document.getElementById('t3_shippingSaved').innerText = `₹${Math.round(shippingSaved).toLocaleString('en-IN')}`;
+      document.getElementById('t3_codSaved').innerText = `₹${Math.round(codFeesSaved).toLocaleString('en-IN')}`;
+      document.getElementById('t3_totalDiscountGiven').innerText = `-₹${Math.round(totalDiscountGiven).toLocaleString('en-IN')}`;
+      document.getElementById('t3_grossSavings').innerText = `₹${Math.round(grossSavings).toLocaleString('en-IN')}`;
+      document.getElementById('t3_maxSafeDiscount').innerText = `₹${maxSafeDiscount}/order`;
+    }
+
+    function shareWhatsAppTool3() {
+      const gain = document.getElementById('t3_netGain').innerText;
+      const safeDiscount = document.getElementById('t3_maxSafeDiscount').innerText;
+      const gross = document.getElementById('t3_grossSavings').innerText;
+      const text = encodeURIComponent(`⚡ *COD vs Prepaid ROI Analysis*\n- Net Profit Gain (100 Orders): ${gain}\n- Gross Friction Savings: ${gross}\n- Max Safe Discount Allowed: ${safeDiscount}\n\n👉 Calculate prepaid discount ROI free: https://apexaura-studio.github.io/ecommerce-profit-calculator/`);
+      window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+    }
+
+    function copySummaryTool3() {
+      const gain = document.getElementById('t3_netGain').innerText;
+      const safeDiscount = document.getElementById('t3_maxSafeDiscount').innerText;
+      const text = `⚡ COD vs Prepaid ROI Analysis\n- Net Profit Gain (100 Orders): ${gain}\n- Max Safe Discount Allowed: ${safeDiscount}\n\nCalculate free: https://apexaura-studio.github.io/ecommerce-profit-calculator/`;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copyBtn3');
+        btn.innerText = '✅ Copied!';
+        setTimeout(() => { btn.innerHTML = '<span>📋 Copy Summary</span>'; }, 2000);
+      });
+    }
+
     // MODAL HELPERS
     function openModal(id) {
       document.getElementById(id).classList.remove('hidden');
@@ -567,12 +742,18 @@
       input.addEventListener('input', calculateTool2);
     });
 
+    document.querySelectorAll('#tool3-section input').forEach(input => {
+      input.addEventListener('input', calculateTool3);
+    });
+
     document.getElementById('themeToggle').addEventListener('click', () => {
       document.documentElement.classList.toggle('dark');
     });
 
+    // INIT
     applyPreset('meesho');
     calculateTool2();
+    calculateTool3();
   </script>
 </body>
 </html>
