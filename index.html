@@ -34,6 +34,16 @@
   }
   </script>
 
+  <!-- Google Analytics (GA4 Tag Placeholder) -->
+  <!-- Replace G-XXXXXXXXXX with your Measurement ID when generated -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -56,7 +66,7 @@
     }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 font-sans transition-colors duration-200">
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 font-sans transition-colors duration-200 min-h-screen flex flex-col justify-between">
 
   <!-- Navbar -->
   <nav class="border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur sticky top-0 z-50">
@@ -65,14 +75,18 @@
         <span class="text-2xl">📦</span>
         <span class="font-bold text-lg text-indigo-600 dark:text-indigo-400">SellerMargin</span>
       </div>
-      <button id="themeToggle" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-sm border border-slate-300 dark:border-slate-700">
-        🌓 Mode
-      </button>
+      <div class="flex items-center space-x-4">
+        <button onclick="openModal('aboutModal')" class="text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-indigo-600">About</button>
+        <button onclick="openModal('contactModal')" class="text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-indigo-600">Contact</button>
+        <button id="themeToggle" class="p-1.5 px-2.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-xs border border-slate-300 dark:border-slate-700">
+          🌓 Mode
+        </button>
+      </div>
     </div>
   </nav>
 
   <!-- Main Container -->
-  <main class="max-w-5xl mx-auto px-4 py-8">
+  <main class="max-w-5xl mx-auto px-4 py-8 flex-grow">
     <div class="text-center mb-6">
       <h1 class="text-3xl md:text-4xl font-extrabold mb-3">E-Commerce Profit & RTO Calculator</h1>
       <p class="text-slate-600 dark:text-slate-400 text-sm md:text-base max-w-2xl mx-auto">
@@ -80,13 +94,13 @@
       </p>
     </div>
 
-    <!-- 1-Click Presets with Clear Active Highlights -->
+    <!-- 1-Click Presets -->
     <div class="flex flex-wrap items-center justify-center gap-2 mb-6">
       <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider mr-2">Quick Presets:</span>
-      <button id="btn-meesho" onclick="applyPreset('meesho')" class="preset-btn px-4 py-2 text-xs font-bold rounded-xl border transition-all duration-200 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-700 shadow-sm hover:border-pink-500">Meesho (0% Fee)</button>
-      <button id="btn-amazon" onclick="applyPreset('amazon')" class="preset-btn px-4 py-2 text-xs font-bold rounded-xl border transition-all duration-200 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-700 shadow-sm hover:border-amber-500">Amazon (~12% Fee)</button>
-      <button id="btn-flipkart" onclick="applyPreset('flipkart')" class="preset-btn px-4 py-2 text-xs font-bold rounded-xl border transition-all duration-200 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-700 shadow-sm hover:border-blue-500">Flipkart (~10% Fee)</button>
-      <button id="btn-d2c" onclick="applyPreset('d2c')" class="preset-btn px-4 py-2 text-xs font-bold rounded-xl border transition-all duration-200 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-700 shadow-sm hover:border-emerald-500">Shopify / D2C (2% PG)</button>
+      <button id="btn-meesho" onclick="applyPreset('meesho')" class="preset-btn px-4 py-2 text-xs font-bold rounded-xl border transition-all duration-200 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-700 shadow-sm">Meesho (0% Fee)</button>
+      <button id="btn-amazon" onclick="applyPreset('amazon')" class="preset-btn px-4 py-2 text-xs font-bold rounded-xl border transition-all duration-200 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-700 shadow-sm">Amazon (~12% Fee)</button>
+      <button id="btn-flipkart" onclick="applyPreset('flipkart')" class="preset-btn px-4 py-2 text-xs font-bold rounded-xl border transition-all duration-200 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-700 shadow-sm">Flipkart (~10% Fee)</button>
+      <button id="btn-d2c" onclick="applyPreset('d2c')" class="preset-btn px-4 py-2 text-xs font-bold rounded-xl border transition-all duration-200 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-700 shadow-sm">Shopify / D2C (2% PG)</button>
     </div>
 
     <!-- Calculator Card -->
@@ -178,7 +192,7 @@
           </button>
         </div>
 
-        <!-- Affiliate / Pro Tip Slot -->
+        <!-- Pro Tip Slot -->
         <div class="p-4 rounded-xl border border-dashed border-indigo-300 dark:border-indigo-800 bg-indigo-50/50 dark:bg-indigo-950/20 text-center">
           <div class="text-[11px] font-semibold text-indigo-700 dark:text-indigo-400">💡 Pro Seller Tip</div>
           <p class="text-[11px] text-slate-600 dark:text-slate-400 mt-1">High RTO killing your margin? Connect automated WhatsApp order verification to reduce return rates by up to 40%.</p>
@@ -215,6 +229,83 @@
       </div>
     </article>
   </main>
+
+  <!-- Legal & AdSense Compliant Footer -->
+  <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 mt-12 py-6">
+    <div class="max-w-5xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500 dark:text-slate-400 space-y-4 md:space-y-0">
+      <div>
+        © 2026 SellerMargin (Apexaura Studio). All rights reserved.
+      </div>
+      <div class="flex flex-wrap gap-4 font-medium">
+        <button onclick="openModal('aboutModal')" class="hover:text-indigo-600">About Us</button>
+        <button onclick="openModal('contactModal')" class="hover:text-indigo-600">Contact</button>
+        <button onclick="openModal('privacyModal')" class="hover:text-indigo-600">Privacy Policy</button>
+        <button onclick="openModal('termsModal')" class="hover:text-indigo-600">Terms of Service</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODALS FOR ADSENSE PAGES -->
+  <!-- About Modal -->
+  <div id="aboutModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center p-4 z-50">
+    <div class="bg-white dark:bg-slate-800 max-w-lg w-full p-6 rounded-2xl max-h-[85vh] overflow-y-auto">
+      <div class="flex justify-between items-center pb-3 border-b border-slate-200 dark:border-slate-700">
+        <h3 class="font-bold text-lg">About SellerMargin</h3>
+        <button onclick="closeModal('aboutModal')" class="text-xl font-bold">&times;</button>
+      </div>
+      <div class="text-xs leading-relaxed text-slate-600 dark:text-slate-300 mt-4 space-y-3">
+        <p><strong>SellerMargin</strong> by Apexaura Studio is a dedicated suite of free micro-tools designed specifically for Indian e-commerce sellers across Meesho, Amazon, Flipkart, and Shopify.</p>
+        <p>Our mission is to help small and medium D2C business owners understand their true financial margins, dead freight, and return losses without expensive ERP software.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Modal -->
+  <div id="contactModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center p-4 z-50">
+    <div class="bg-white dark:bg-slate-800 max-w-lg w-full p-6 rounded-2xl max-h-[85vh] overflow-y-auto">
+      <div class="flex justify-between items-center pb-3 border-b border-slate-200 dark:border-slate-700">
+        <h3 class="font-bold text-lg">Contact Us</h3>
+        <button onclick="closeModal('contactModal')" class="text-xl font-bold">&times;</button>
+      </div>
+      <div class="text-xs leading-relaxed text-slate-600 dark:text-slate-300 mt-4 space-y-3">
+        <p>Have suggestions, tool ideas, or partnership inquiries? We would love to hear from you.</p>
+        <div class="p-3 bg-slate-100 dark:bg-slate-700 rounded-xl">
+          <p><strong>Team:</strong> Apexaura Studio</p>
+          <p><strong>Email:</strong> support@apexaura.studio</p>
+          <p><strong>Support Window:</strong> Monday - Saturday (9:00 AM - 6:00 PM IST)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Privacy Policy Modal -->
+  <div id="privacyModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center p-4 z-50">
+    <div class="bg-white dark:bg-slate-800 max-w-lg w-full p-6 rounded-2xl max-h-[85vh] overflow-y-auto">
+      <div class="flex justify-between items-center pb-3 border-b border-slate-200 dark:border-slate-700">
+        <h3 class="font-bold text-lg">Privacy Policy</h3>
+        <button onclick="closeModal('privacyModal')" class="text-xl font-bold">&times;</button>
+      </div>
+      <div class="text-xs leading-relaxed text-slate-600 dark:text-slate-300 mt-4 space-y-3">
+        <p>At SellerMargin, accessible from https://apexaura-studio.github.io/ecommerce-profit-calculator/, your privacy is one of our main priorities.</p>
+        <p><strong>Data Processing:</strong> All financial and unit calculations happen locally inside your web browser. We do NOT store your selling price, supplier costs, or sales data on any remote server.</p>
+        <p><strong>Analytics & Cookies:</strong> We use standard cookies and analytics tools (like Google Analytics) to monitor website traffic and improve user experience.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Terms Modal -->
+  <div id="termsModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center p-4 z-50">
+    <div class="bg-white dark:bg-slate-800 max-w-lg w-full p-6 rounded-2xl max-h-[85vh] overflow-y-auto">
+      <div class="flex justify-between items-center pb-3 border-b border-slate-200 dark:border-slate-700">
+        <h3 class="font-bold text-lg">Terms of Service</h3>
+        <button onclick="closeModal('termsModal')" class="text-xl font-bold">&times;</button>
+      </div>
+      <div class="text-xs leading-relaxed text-slate-600 dark:text-slate-300 mt-4 space-y-3">
+        <p>By using SellerMargin, you agree to comply with our Terms of Service.</p>
+        <p><strong>Disclaimer:</strong> The numbers generated by this calculator are for informational and estimation purposes only. Actual marketplace fees and return freight charges may vary depending on weight discrepancies and platform policies.</p>
+      </div>
+    </div>
+  </div>
 
   <script>
     function calculate() {
@@ -315,6 +406,17 @@
       });
     }
 
+    // Modal Handlers
+    function openModal(id) {
+      document.getElementById(id).classList.remove('hidden');
+      document.getElementById(id).classList.add('flex');
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+      document.getElementById(id).classList.remove('flex');
+    }
+
     document.querySelectorAll('input').forEach(input => {
       input.addEventListener('input', () => {
         resetPresetButtons();
@@ -327,7 +429,6 @@
       document.documentElement.classList.toggle('dark');
     });
 
-    // Default preset Meesho selected on start
     applyPreset('meesho');
   </script>
 </body>
