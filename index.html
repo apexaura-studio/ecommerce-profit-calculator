@@ -4,24 +4,22 @@
   <meta charset="UTF-8">
   <meta name="google-site-verification" content="LHTYo-8imAr00wkV25ZEfYspCvQrQdKGj3v-lKgJzKY" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>E-Commerce Profit & RTO Calculator | Meesho, Amazon, Flipkart, Shopify</title>
-  <meta name="description" content="Free online e-commerce profit and RTO loss calculator for Meesho, Amazon, Flipkart, and D2C sellers. Calculate real net margins, forward shipping, and return costs accurately.">
-  <meta name="keywords" content="ecommerce profit calculator, meesho calculator, rto loss calculator, amazon seller margin, flipkart profit calculator, return to origin ecommerce, seller margin tool">
+  <title>SellerMargin | E-Commerce Profit, RTO & Return Damage Analyzer</title>
+  <meta name="description" content="Free e-commerce seller suite for Meesho, Amazon, Flipkart, and Shopify. Calculate net margin, RTO dead freight, and customer return damage/fraud losses accurately.">
+  <meta name="keywords" content="ecommerce profit calculator, rto loss calculator, return damage analyzer, meesho profit calculator, amazon seller margin, ecommerce fraud loss">
   <meta name="author" content="SellerMargin">
   <link rel="canonical" href="https://apexaura-studio.github.io/ecommerce-profit-calculator/" />
 
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://apexaura-studio.github.io/ecommerce-profit-calculator/">
-  <meta property="og:title" content="E-Commerce Profit & RTO Calculator | Accurate Seller Margins">
-  <meta property="og:description" content="Calculate real net profit and accurate RTO loss impact for Amazon, Meesho, and Flipkart sales in India.">
+  <meta property="og:title" content="SellerMargin | Complete E-Commerce Seller Profit & Risk Suite">
+  <meta property="og:description" content="Calculate real net profit, platform referral fees, and customer return damage loss across Indian marketplaces.">
 
-  <!-- Schema Markup -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "E-Commerce Profit & RTO Calculator",
+    "name": "SellerMargin Suite",
     "url": "https://apexaura-studio.github.io/ecommerce-profit-calculator/",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "All",
@@ -29,19 +27,8 @@
       "@type": "Offer",
       "price": "0",
       "priceCurrency": "INR"
-    },
-    "description": "Free accurate profit and RTO loss margin calculator for Meesho, Amazon, Flipkart, and Shopify sellers in India."
+    }
   }
-  </script>
-
-  <!-- Google Analytics (GA4 Tag Placeholder) -->
-  <!-- Replace G-XXXXXXXXXX with your Measurement ID when generated -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
   </script>
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -68,7 +55,6 @@
 </head>
 <body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 font-sans transition-colors duration-200 min-h-screen flex flex-col justify-between">
 
-  <!-- Navbar -->
   <nav class="border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur sticky top-0 z-50">
     <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
       <div class="flex items-center space-x-2">
@@ -85,152 +71,242 @@
     </div>
   </nav>
 
-  <!-- Main Container -->
-  <main class="max-w-5xl mx-auto px-4 py-8 flex-grow">
-    <div class="text-center mb-6">
-      <h1 class="text-3xl md:text-4xl font-extrabold mb-3">E-Commerce Profit & RTO Calculator</h1>
-      <p class="text-slate-600 dark:text-slate-400 text-sm md:text-base max-w-2xl mx-auto">
-        Calculate exact in-hand net profit, platform referral fees, and real customer return (RTO) impact across India's top marketplaces.
-      </p>
-    </div>
-
-    <!-- 1-Click Presets -->
-    <div class="flex flex-wrap items-center justify-center gap-2 mb-6">
-      <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider mr-2">Quick Presets:</span>
-      <button id="btn-meesho" onclick="applyPreset('meesho')" class="preset-btn px-4 py-2 text-xs font-bold rounded-xl border transition-all duration-200 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-700 shadow-sm">Meesho (0% Fee)</button>
-      <button id="btn-amazon" onclick="applyPreset('amazon')" class="preset-btn px-4 py-2 text-xs font-bold rounded-xl border transition-all duration-200 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-700 shadow-sm">Amazon (~12% Fee)</button>
-      <button id="btn-flipkart" onclick="applyPreset('flipkart')" class="preset-btn px-4 py-2 text-xs font-bold rounded-xl border transition-all duration-200 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-700 shadow-sm">Flipkart (~10% Fee)</button>
-      <button id="btn-d2c" onclick="applyPreset('d2c')" class="preset-btn px-4 py-2 text-xs font-bold rounded-xl border transition-all duration-200 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-700 shadow-sm">Shopify / D2C (2% PG)</button>
-    </div>
-
-    <!-- Calculator Card -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-      <!-- Input Controls -->
-      <div class="lg:col-span-7 bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
-        <h2 class="font-semibold text-lg border-b border-slate-200 dark:border-slate-700 pb-2 mb-4">Order & Cost Details</h2>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Selling Price (₹)</label>
-            <input type="number" id="sellingPrice" value="799" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-          </div>
-          <div>
-            <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Product Cost / Sourcing (₹)</label>
-            <input type="number" id="sourcingCost" value="250" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-          <div>
-            <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Shipping Cost (₹)</label>
-            <input type="number" id="shippingCost" value="70" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-          </div>
-          <div>
-            <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Packaging (₹)</label>
-            <input type="number" id="packagingCost" value="20" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-          </div>
-          <div>
-            <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Platform/Gateway Fee (%)</label>
-            <input type="number" id="platformFee" value="0" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-          <div>
-            <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Expected Return / RTO Rate (%)</label>
-            <input type="number" id="rtoRate" value="25" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-          </div>
-          <div>
-            <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Reverse Shipping on Return (₹)</label>
-            <input type="number" id="reverseShipping" value="0" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-          </div>
-        </div>
-      </div>
-
-      <!-- Output Results -->
-      <div class="lg:col-span-5 space-y-4">
-        <div class="bg-indigo-600 text-white p-6 rounded-2xl shadow-md">
-          <div class="text-xs uppercase tracking-wider font-semibold opacity-80">Real Net Profit (Per 100 Orders)</div>
-          <div class="text-3xl font-black my-2" id="netProfit">₹0</div>
-          <div class="flex justify-between items-center text-xs pt-3 border-t border-indigo-400">
-            <span>Net Profit Per Delivered Order:</span>
-            <span class="font-bold text-sm" id="profitPerOrder">₹0</span>
-          </div>
-          <div class="flex justify-between items-center text-xs mt-1">
-            <span>Net Margin (%):</span>
-            <span class="font-bold text-sm" id="netMargin">0%</span>
-          </div>
-        </div>
-
-        <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 text-xs space-y-2">
-          <div class="font-semibold text-sm mb-3">Cost Breakdown (100 Orders Model)</div>
-          <div class="flex justify-between text-slate-600 dark:text-slate-400">
-            <span>Total Revenue:</span>
-            <span class="font-bold text-slate-900 dark:text-slate-100" id="totalRevenue">₹0</span>
-          </div>
-          <div class="flex justify-between text-slate-600 dark:text-slate-400">
-            <span>Total Product Cost:</span>
-            <span class="font-bold text-slate-900 dark:text-slate-100" id="totalProductCost">₹0</span>
-          </div>
-          <div class="flex justify-between text-slate-600 dark:text-slate-400">
-            <span>Total Forward Shipping:</span>
-            <span class="font-bold text-slate-900 dark:text-slate-100" id="totalForwardShipping">₹0</span>
-          </div>
-          <div class="flex justify-between text-rose-500 font-medium">
-            <span>RTO / Return Loss:</span>
-            <span class="font-bold" id="totalRtoLoss">₹0</span>
-          </div>
-        </div>
-
-        <!-- Share Actions -->
-        <div class="grid grid-cols-2 gap-3">
-          <button onclick="shareWhatsApp()" class="flex items-center justify-center space-x-2 py-2.5 px-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-medium text-xs shadow-sm transition">
-            <span>📲 Share WhatsApp</span>
-          </button>
-          <button onclick="copySummary()" id="copyBtn" class="flex items-center justify-center space-x-2 py-2.5 px-4 bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-800 dark:text-slate-100 rounded-xl font-medium text-xs transition">
-            <span>📋 Copy Summary</span>
-          </button>
-        </div>
-
-        <!-- Pro Tip Slot -->
-        <div class="p-4 rounded-xl border border-dashed border-indigo-300 dark:border-indigo-800 bg-indigo-50/50 dark:bg-indigo-950/20 text-center">
-          <div class="text-[11px] font-semibold text-indigo-700 dark:text-indigo-400">💡 Pro Seller Tip</div>
-          <p class="text-[11px] text-slate-600 dark:text-slate-400 mt-1">High RTO killing your margin? Connect automated WhatsApp order verification to reduce return rates by up to 40%.</p>
-        </div>
+  <main class="max-w-5xl mx-auto px-4 py-6 flex-grow">
+    
+    <div class="flex justify-center mb-6">
+      <div class="inline-flex p-1 bg-slate-200 dark:bg-slate-800 rounded-2xl shadow-inner border border-slate-300 dark:border-slate-700">
+        <button id="tab-tool1" onclick="switchTool('tool1')" class="px-5 py-2.5 text-xs md:text-sm font-bold rounded-xl transition-all duration-200 bg-indigo-600 text-white shadow">
+          📦 Profit & RTO Calculator
+        </button>
+        <button id="tab-tool2" onclick="switchTool('tool2')" class="px-5 py-2.5 text-xs md:text-sm font-bold rounded-xl transition-all duration-200 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
+          🛡️ Return Damage & Abuse Analyzer
+        </button>
       </div>
     </div>
 
-    <!-- SEO Content Section -->
+    <section id="tool1-section">
+      <div class="text-center mb-6">
+        <h1 class="text-3xl md:text-4xl font-extrabold mb-2">E-Commerce Profit & RTO Calculator</h1>
+        <p class="text-slate-600 dark:text-slate-400 text-xs md:text-sm max-w-2xl mx-auto">
+          Calculate exact in-hand net profit, platform fees, and real customer return (RTO) impact across India's top marketplaces.
+        </p>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-center gap-2 mb-6">
+        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider mr-2">Quick Presets:</span>
+        <button id="btn-meesho" onclick="applyPreset('meesho')" class="preset-btn px-4 py-2 text-xs font-bold rounded-xl border transition-all duration-200 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-700 shadow-sm">Meesho (0% Fee)</button>
+        <button id="btn-amazon" onclick="applyPreset('amazon')" class="preset-btn px-4 py-2 text-xs font-bold rounded-xl border transition-all duration-200 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-700 shadow-sm">Amazon (~12% Fee)</button>
+        <button id="btn-flipkart" onclick="applyPreset('flipkart')" class="preset-btn px-4 py-2 text-xs font-bold rounded-xl border transition-all duration-200 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-700 shadow-sm">Flipkart (~10% Fee)</button>
+        <button id="btn-d2c" onclick="applyPreset('d2c')" class="preset-btn px-4 py-2 text-xs font-bold rounded-xl border transition-all duration-200 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-700 shadow-sm">Shopify / D2C (2% PG)</button>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div class="lg:col-span-7 bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+          <h2 class="font-semibold text-lg border-b border-slate-200 dark:border-slate-700 pb-2 mb-4">Order & Cost Details</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Selling Price (₹)</label>
+              <input type="number" id="sellingPrice" value="799" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Product Cost / Sourcing (₹)</label>
+              <input type="number" id="sourcingCost" value="250" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+            <div>
+              <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Shipping Cost (₹)</label>
+              <input type="number" id="shippingCost" value="70" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Packaging (₹)</label>
+              <input type="number" id="packagingCost" value="20" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Platform Fee (%)</label>
+              <input type="number" id="platformFee" value="0" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+            <div>
+              <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Return / RTO Rate (%)</label>
+              <input type="number" id="rtoRate" value="25" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Reverse Shipping on Return (₹)</label>
+              <input type="number" id="reverseShipping" value="0" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 space-y-4">
+          <div class="bg-indigo-600 text-white p-6 rounded-2xl shadow-md">
+            <div class="text-xs uppercase tracking-wider font-semibold opacity-80">Real Net Profit (Per 100 Orders)</div>
+            <div class="text-3xl font-black my-2" id="netProfit">₹0</div>
+            <div class="flex justify-between items-center text-xs pt-3 border-t border-indigo-400">
+              <span>Profit Per Delivered Order:</span>
+              <span class="font-bold text-sm" id="profitPerOrder">₹0</span>
+            </div>
+            <div class="flex justify-between items-center text-xs mt-1">
+              <span>Net Margin (%):</span>
+              <span class="font-bold text-sm" id="netMargin">0%</span>
+            </div>
+          </div>
+
+          <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 text-xs space-y-2">
+            <div class="font-semibold text-sm mb-3">Cost Breakdown (100 Orders Model)</div>
+            <div class="flex justify-between text-slate-600 dark:text-slate-400">
+              <span>Total Revenue:</span>
+              <span class="font-bold text-slate-900 dark:text-slate-100" id="totalRevenue">₹0</span>
+            </div>
+            <div class="flex justify-between text-slate-600 dark:text-slate-400">
+              <span>Total Product Cost:</span>
+              <span class="font-bold text-slate-900 dark:text-slate-100" id="totalProductCost">₹0</span>
+            </div>
+            <div class="flex justify-between text-slate-600 dark:text-slate-400">
+              <span>Total Forward Shipping:</span>
+              <span class="font-bold text-slate-900 dark:text-slate-100" id="totalForwardShipping">₹0</span>
+            </div>
+            <div class="flex justify-between text-rose-500 font-medium">
+              <span>RTO / Return Loss:</span>
+              <span class="font-bold" id="totalRtoLoss">₹0</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <button onclick="shareWhatsAppTool1()" class="flex items-center justify-center space-x-2 py-2.5 px-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-medium text-xs shadow-sm transition">
+              <span>📲 Share WhatsApp</span>
+            </button>
+            <button onclick="copySummaryTool1()" id="copyBtn1" class="flex items-center justify-center space-x-2 py-2.5 px-4 bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-800 dark:text-slate-100 rounded-xl font-medium text-xs transition">
+              <span>📋 Copy Summary</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tool2-section" class="hidden">
+      <div class="text-center mb-6">
+        <h1 class="text-3xl md:text-4xl font-extrabold mb-2 text-rose-600 dark:text-rose-400">Customer Return Damage & Fraud Analyzer</h1>
+        <p class="text-slate-600 dark:text-slate-400 text-xs md:text-sm max-w-2xl mx-auto">
+          Calculate invisible losses from damaged customer returns, wrong item fraud, destroyed inventory, and safe markup price.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div class="lg:col-span-7 bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+          <h2 class="font-semibold text-lg border-b border-slate-200 dark:border-slate-700 pb-2 mb-4 text-slate-900 dark:text-slate-100">Monthly Volume & Return Parameters</h2>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Monthly Dispatched Orders</label>
+              <input type="number" id="t2_monthlyOrders" value="500" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-rose-500">
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Product Sourcing Cost (₹)</label>
+              <input type="number" id="t2_sourcingCost" value="350" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-rose-500">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+            <div>
+              <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Total Return Rate (%) [RTO + Customer Return]</label>
+              <input type="number" id="t2_returnRate" value="25" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-rose-500">
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Current Selling Price (₹)</label>
+              <input type="number" id="t2_sellingPrice" value="999" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-rose-500">
+            </div>
+          </div>
+
+          <h3 class="font-semibold text-sm border-b border-slate-200 dark:border-slate-700 pb-2 mt-6 mb-3 text-rose-500">Abuse & Damage Severity</h3>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Damaged/Used Returns (% of total returns)</label>
+              <input type="number" id="t2_damagedPercent" value="12" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-rose-500">
+              <span class="text-[10px] text-slate-400">Products returned broken/torn with 0 resale value</span>
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Wrong Item/Empty Box Fraud (%)</label>
+              <input type="number" id="t2_fraudPercent" value="4" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-rose-500">
+              <span class="text-[10px] text-slate-400">Customer returned fake items, soap, or bricks</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 space-y-4">
+          <div class="bg-rose-600 text-white p-6 rounded-2xl shadow-md">
+            <div class="text-xs uppercase tracking-wider font-semibold opacity-80">Total Dead Inventory Loss / Month</div>
+            <div class="text-3xl font-black my-2" id="t2_totalDamageLoss">₹0</div>
+            <div class="flex justify-between items-center text-xs pt-3 border-t border-rose-400">
+              <span>Monthly Destroyed Units:</span>
+              <span class="font-bold text-sm" id="t2_destroyedUnits">0 Units</span>
+            </div>
+            <div class="flex justify-between items-center text-xs mt-1">
+              <span>Hidden Cost Per Delivered Unit:</span>
+              <span class="font-bold text-sm text-yellow-300" id="t2_hiddenCostPerDelivered">₹0</span>
+            </div>
+          </div>
+
+          <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 text-xs space-y-2">
+            <div class="font-semibold text-sm mb-3">Abuse Impact & Price Protection</div>
+            <div class="flex justify-between text-slate-600 dark:text-slate-400">
+              <span>Total Monthly Returns:</span>
+              <span class="font-bold text-slate-900 dark:text-slate-100" id="t2_totalReturnCount">0</span>
+            </div>
+            <div class="flex justify-between text-rose-500">
+              <span>Damage & Fraud Parcel Count:</span>
+              <span class="font-bold" id="t2_badParcelCount">0</span>
+            </div>
+            <div class="flex justify-between text-emerald-600 dark:text-emerald-400 font-semibold pt-2 border-t border-slate-200 dark:border-slate-700">
+              <span>Recommended Safe Selling Price:</span>
+              <span class="font-bold text-sm" id="t2_safePrice">₹0</span>
+            </div>
+            <p class="text-[10px] text-slate-400 pt-1">Safe selling price covers your dead inventory erosion so your profit margin stays intact.</p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <button onclick="shareWhatsAppTool2()" class="flex items-center justify-center space-x-2 py-2.5 px-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-medium text-xs shadow-sm transition">
+              <span>📲 Share Risk Report</span>
+            </button>
+            <button onclick="copySummaryTool2()" id="copyBtn2" class="flex items-center justify-center space-x-2 py-2.5 px-4 bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-800 dark:text-slate-100 rounded-xl font-medium text-xs transition">
+              <span>📋 Copy Summary</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <article class="mt-12 bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 prose dark:prose-invert max-w-none text-sm leading-relaxed">
-      <h2 class="text-xl font-bold mb-3">How to Calculate Real E-Commerce Profit Margin?</h2>
+      <h2 class="text-xl font-bold mb-3">Understanding E-Commerce Returns, Dead Freight & Inventory Fraud</h2>
       <p class="text-slate-600 dark:text-slate-400 mb-4">
-        Most new online sellers fail because they ignore the heavy cost of <strong>RTO (Return to Origin)</strong>. When an order is returned or rejected at the customer's doorstep, the seller still pays for forward shipping, reverse shipping charges, and damaged packaging materials while generating zero revenue.
+        E-commerce sellers across Meesho, Amazon India, Flipkart, and Shopify face two major profit killers: <strong>RTO (Courier Return to Origin)</strong> and <strong>Customer Return Abuse (Damage/Fraud)</strong>. While basic calculators only subtract freight charges, real profitability depends on calculating dead inventory write-offs.
       </p>
 
-      <h3 class="text-lg font-bold mb-2">Why RTO Destroys Indian E-Commerce Margins</h3>
+      <h3 class="text-lg font-bold mb-2">How Customer Return Abuse Silently Destroys Margins</h3>
       <p class="text-slate-600 dark:text-slate-400 mb-4">
-        On platforms like Meesho, Flipkart, and Amazon India, Cash on Delivery (COD) orders frequently have a 15% to 35% return rate. If you only calculate profit based on delivered units without factoring in dead freight on returns, your actual balance sheet will show hidden losses.
+        When high-value apparel, electronics, or cosmetics are returned used, damaged, or swapped with fake items, the seller absorbs 100% of the sourcing cost. To maintain healthy cash flow, this hidden erosion must be built directly into your listing markup.
       </p>
 
       <h2 class="text-xl font-bold mt-6 mb-3">Frequently Asked Questions (FAQ)</h2>
       <div class="space-y-3">
         <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-700/50">
-          <h4 class="font-semibold text-slate-900 dark:text-slate-100">What is RTO in e-commerce?</h4>
+          <h4 class="font-semibold text-slate-900 dark:text-slate-100">What is Customer Return Abuse in Indian E-Commerce?</h4>
           <p class="text-slate-600 dark:text-slate-400 mt-1">
-            RTO stands for Return to Origin. It happens when a Cash on Delivery (COD) or prepaid parcel fails to be delivered and returns back to the seller warehouse.
+            Return abuse occurs when a customer returns a product after using it, returns a counterfeit/damaged item, or returns an empty package while claiming a full refund from the platform.
           </p>
         </div>
         <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-700/50">
-          <h4 class="font-semibold text-slate-900 dark:text-slate-100">How can I reduce RTO loss on Meesho & Amazon?</h4>
+          <h4 class="font-semibold text-slate-900 dark:text-slate-100">How do I protect my margin against return fraud?</h4>
           <p class="text-slate-600 dark:text-slate-400 mt-1">
-            Verify customer contact details via WhatsApp automated confirmation, encourage prepaid orders by offering small discounts, and avoid risky pincodes with poor courier delivery records.
+            Use tamper-evident security tags, maintain barcode-scanned packing video logs, file platform SPF (Seller Protection Fund) claims within 48 hours, and adjust your base price using our Safe Selling Price model.
           </p>
         </div>
       </div>
     </article>
   </main>
 
-  <!-- Legal & AdSense Compliant Footer -->
   <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 mt-12 py-6">
     <div class="max-w-5xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500 dark:text-slate-400 space-y-4 md:space-y-0">
       <div>
@@ -245,8 +321,6 @@
     </div>
   </footer>
 
-  <!-- MODALS FOR ADSENSE PAGES -->
-  <!-- About Modal -->
   <div id="aboutModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center p-4 z-50">
     <div class="bg-white dark:bg-slate-800 max-w-lg w-full p-6 rounded-2xl max-h-[85vh] overflow-y-auto">
       <div class="flex justify-between items-center pb-3 border-b border-slate-200 dark:border-slate-700">
@@ -260,7 +334,6 @@
     </div>
   </div>
 
-  <!-- Contact Modal -->
   <div id="contactModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center p-4 z-50">
     <div class="bg-white dark:bg-slate-800 max-w-lg w-full p-6 rounded-2xl max-h-[85vh] overflow-y-auto">
       <div class="flex justify-between items-center pb-3 border-b border-slate-200 dark:border-slate-700">
@@ -278,7 +351,6 @@
     </div>
   </div>
 
-  <!-- Privacy Policy Modal -->
   <div id="privacyModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center p-4 z-50">
     <div class="bg-white dark:bg-slate-800 max-w-lg w-full p-6 rounded-2xl max-h-[85vh] overflow-y-auto">
       <div class="flex justify-between items-center pb-3 border-b border-slate-200 dark:border-slate-700">
@@ -288,12 +360,10 @@
       <div class="text-xs leading-relaxed text-slate-600 dark:text-slate-300 mt-4 space-y-3">
         <p>At SellerMargin, accessible from https://apexaura-studio.github.io/ecommerce-profit-calculator/, your privacy is one of our main priorities.</p>
         <p><strong>Data Processing:</strong> All financial and unit calculations happen locally inside your web browser. We do NOT store your selling price, supplier costs, or sales data on any remote server.</p>
-        <p><strong>Analytics & Cookies:</strong> We use standard cookies and analytics tools (like Google Analytics) to monitor website traffic and improve user experience.</p>
       </div>
     </div>
   </div>
 
-  <!-- Terms Modal -->
   <div id="termsModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center p-4 z-50">
     <div class="bg-white dark:bg-slate-800 max-w-lg w-full p-6 rounded-2xl max-h-[85vh] overflow-y-auto">
       <div class="flex justify-between items-center pb-3 border-b border-slate-200 dark:border-slate-700">
@@ -308,7 +378,29 @@
   </div>
 
   <script>
-    function calculate() {
+    // TAB SWITCHER
+    function switchTool(tool) {
+      const tab1 = document.getElementById('tab-tool1');
+      const tab2 = document.getElementById('tab-tool2');
+      const sec1 = document.getElementById('tool1-section');
+      const sec2 = document.getElementById('tool2-section');
+
+      if (tool === 'tool1') {
+        tab1.className = "px-5 py-2.5 text-xs md:text-sm font-bold rounded-xl transition-all duration-200 bg-indigo-600 text-white shadow";
+        tab2.className = "px-5 py-2.5 text-xs md:text-sm font-bold rounded-xl transition-all duration-200 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white";
+        sec1.classList.remove('hidden');
+        sec2.classList.add('hidden');
+      } else {
+        tab2.className = "px-5 py-2.5 text-xs md:text-sm font-bold rounded-xl transition-all duration-200 bg-rose-600 text-white shadow";
+        tab1.className = "px-5 py-2.5 text-xs md:text-sm font-bold rounded-xl transition-all duration-200 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white";
+        sec2.classList.remove('hidden');
+        sec1.classList.add('hidden');
+        calculateTool2();
+      }
+    }
+
+    // TOOL 1 LOGIC
+    function calculateTool1() {
       const price = parseFloat(document.getElementById('sellingPrice').value) || 0;
       const productCost = parseFloat(document.getElementById('sourcingCost').value) || 0;
       const forwardShipping = parseFloat(document.getElementById('shippingCost').value) || 0;
@@ -379,57 +471,108 @@
         document.getElementById('reverseShipping').value = '80';
         document.getElementById('btn-d2c').className = "preset-btn px-4 py-2 text-xs font-bold rounded-xl border-2 border-emerald-500 bg-emerald-600 text-white shadow-md scale-105 transition-all duration-200";
       }
-      calculate();
+      calculateTool1();
     }
 
-    function getSummaryText() {
+    function shareWhatsAppTool1() {
       const price = document.getElementById('sellingPrice').value;
       const profit = document.getElementById('profitPerOrder').innerText;
       const margin = document.getElementById('netMargin').innerText;
-      const rto = document.getElementById('rtoRate').value;
       const totalProfit = document.getElementById('netProfit').innerText;
-      return `📊 *E-Commerce Margin Breakdown*\n- Selling Price: ₹${price}\n- Profit/Delivered Order: ${profit}\n- Net Margin: ${margin}\n- RTO Rate: ${rto}%\n- Net Profit (100 Orders): ${totalProfit}\n\n👉 Calculate yours free: https://apexaura-studio.github.io/ecommerce-profit-calculator/`;
-    }
-
-    function shareWhatsApp() {
-      const text = encodeURIComponent(getSummaryText());
+      const text = encodeURIComponent(`📊 *E-Commerce Margin Breakdown*\n- Selling Price: ₹${price}\n- Profit/Delivered Order: ${profit}\n- Net Margin: ${margin}\n- Net Profit (100 Orders): ${totalProfit}\n\n👉 Calculate yours free: https://apexaura-studio.github.io/ecommerce-profit-calculator/`);
       window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
     }
 
-    function copySummary() {
-      navigator.clipboard.writeText(getSummaryText()).then(() => {
-        const btn = document.getElementById('copyBtn');
+    function copySummaryTool1() {
+      const price = document.getElementById('sellingPrice').value;
+      const profit = document.getElementById('profitPerOrder').innerText;
+      const margin = document.getElementById('netMargin').innerText;
+      const totalProfit = document.getElementById('netProfit').innerText;
+      const text = `📊 E-Commerce Margin Breakdown\n- Selling Price: ₹${price}\n- Profit/Delivered Order: ${profit}\n- Net Margin: ${margin}\n- Net Profit (100 Orders): ${totalProfit}\n\nCalculate free: https://apexaura-studio.github.io/ecommerce-profit-calculator/`;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copyBtn1');
         btn.innerText = '✅ Copied!';
-        setTimeout(() => {
-          btn.innerHTML = '<span>📋 Copy Summary</span>';
-        }, 2000);
+        setTimeout(() => { btn.innerHTML = '<span>📋 Copy Summary</span>'; }, 2000);
       });
     }
 
-    // Modal Handlers
+    // ==================== TOOL 2 LOGIC ====================
+    function calculateTool2() {
+      const orders = parseFloat(document.getElementById('t2_monthlyOrders').value) || 0;
+      const cost = parseFloat(document.getElementById('t2_sourcingCost').value) || 0;
+      const returnRate = parseFloat(document.getElementById('t2_returnRate').value) || 0;
+      const price = parseFloat(document.getElementById('t2_sellingPrice').value) || 0;
+      const damagedPercent = parseFloat(document.getElementById('t2_damagedPercent').value) || 0;
+      const fraudPercent = parseFloat(document.getElementById('t2_fraudPercent').value) || 0;
+
+      const totalReturns = Math.round((orders * returnRate) / 100);
+      const deliveredOrders = orders - totalReturns;
+
+      const damagedUnits = Math.round((totalReturns * damagedPercent) / 100);
+      const fraudUnits = Math.round((totalReturns * fraudPercent) / 100);
+      const totalBadUnits = damagedUnits + fraudUnits;
+
+      const totalInventoryLoss = totalBadUnits * cost;
+      const hiddenCostPerDelivered = deliveredOrders > 0 ? (totalInventoryLoss / deliveredOrders) : 0;
+      const safePrice = Math.round(price + hiddenCostPerDelivered);
+
+      document.getElementById('t2_totalDamageLoss').innerText = `₹${totalInventoryLoss.toLocaleString('en-IN')}`;
+      document.getElementById('t2_destroyedUnits').innerText = `${totalBadUnits} Units`;
+      document.getElementById('t2_hiddenCostPerDelivered').innerText = `+₹${Math.round(hiddenCostPerDelivered)}/order`;
+      document.getElementById('t2_totalReturnCount').innerText = `${totalReturns} Parcels`;
+      document.getElementById('t2_badParcelCount').innerText = `${totalBadUnits} Units (${damagedUnits} Damaged + ${fraudUnits} Fraud)`;
+      document.getElementById('t2_safePrice').innerText = `₹${safePrice.toLocaleString('en-IN')}`;
+    }
+
+    function shareWhatsAppTool2() {
+      const loss = document.getElementById('t2_totalDamageLoss').innerText;
+      const units = document.getElementById('t2_destroyedUnits').innerText;
+      const safePrice = document.getElementById('t2_safePrice').innerText;
+      const hidden = document.getElementById('t2_hiddenCostPerDelivered').innerText;
+      const text = encodeURIComponent(`🚨 *Return Abuse & Dead Inventory Report*\n- Monthly Inventory Loss: ${loss}\n- Destroyed/Fraud Units: ${units}\n- Hidden Loss Per Order: ${hidden}\n- Recommended Safe Price: ${safePrice}\n\n👉 Analyze your return risk free: https://apexaura-studio.github.io/ecommerce-profit-calculator/`);
+      window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+    }
+
+    function copySummaryTool2() {
+      const loss = document.getElementById('t2_totalDamageLoss').innerText;
+      const units = document.getElementById('t2_destroyedUnits').innerText;
+      const safePrice = document.getElementById('t2_safePrice').innerText;
+      const text = `🚨 Return Abuse & Dead Inventory Report\n- Monthly Inventory Loss: ${loss}\n- Destroyed Units: ${units}\n- Recommended Safe Price: ${safePrice}\n\nAnalyze risk free: https://apexaura-studio.github.io/ecommerce-profit-calculator/`;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copyBtn2');
+        btn.innerText = '✅ Copied!';
+        setTimeout(() => { btn.innerHTML = '<span>📋 Copy Summary</span>'; }, 2000);
+      });
+    }
+
+    // MODAL HELPERS
     function openModal(id) {
       document.getElementById(id).classList.remove('hidden');
       document.getElementById(id).classList.add('flex');
     }
-
     function closeModal(id) {
       document.getElementById(id).classList.add('hidden');
       document.getElementById(id).classList.remove('flex');
     }
 
-    document.querySelectorAll('input').forEach(input => {
+    // LISTENERS
+    document.querySelectorAll('#tool1-section input').forEach(input => {
       input.addEventListener('input', () => {
         resetPresetButtons();
-        calculate();
+        calculateTool1();
       });
     });
 
-    const themeToggle = document.getElementById('themeToggle');
-    themeToggle.addEventListener('click', () => {
+    document.querySelectorAll('#tool2-section input').forEach(input => {
+      input.addEventListener('input', calculateTool2);
+    });
+
+    document.getElementById('themeToggle').addEventListener('click', () => {
       document.documentElement.classList.toggle('dark');
     });
 
     applyPreset('meesho');
+    calculateTool2();
   </script>
 </body>
 </html>
